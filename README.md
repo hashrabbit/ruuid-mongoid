@@ -23,9 +23,33 @@ Or install it yourself as:
 
     $ gem install ruuid
 
-## Usage
+## Example Usage
 
-TODO: Write gem usage instructions
+### UUID Primary Key
+
+```ruby
+class Student
+  include Mongoid::Document
+  include RUUID::UUID
+end
+
+student = Student.new
+# => #<Student _id: dc2533e4-87e4-4eca-a260-46006f34d3ff>
+student.id.class
+# => RUUID::UUID
+```
+
+### UUID Field
+
+```ruby
+class ReportCard
+  include Mongoid::Document
+
+  field :legacy_id, type: :uuid
+
+  belongs_to :student
+end
+```
 
 ## Development
 
