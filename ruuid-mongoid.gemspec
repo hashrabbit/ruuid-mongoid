@@ -17,7 +17,8 @@ Gem::Specification.new do |spec|
   spec.files         = `git ls-files -z`.split("\x0").reject { |f| f.match(%r{^(test|spec|features)/}) }
   spec.require_paths = %w[lib]
 
-  spec.add_dependency 'ruuid', '~> 0.1.0'
+  spec.add_dependency 'mongoid', '~> 4.0'
+  spec.add_dependency 'ruuid', '~> 0.2.0'
 
   spec.add_development_dependency 'bundler', '~> 1.9'
   spec.add_development_dependency 'pry', '~> 0.10.1'
