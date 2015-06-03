@@ -1,17 +1,17 @@
 # coding: utf-8
 lib = File.expand_path('../lib', __FILE__)
 $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
-require 'ruuid/mongo/version'
+require 'ruuid/mongoid/version'
 
 Gem::Specification.new do |spec|
-  spec.name          = 'ruuid-mongo'
-  spec.version       = RUUID::Mongo::VERSION
+  spec.name          = 'ruuid-mongoid'
+  spec.version       = RUUID::Mongoid::VERSION
   spec.authors       = ['Gabe Evans']
   spec.email         = ['gabe@ga.be']
 
   spec.summary       = %q{TODO: Write a short summary, because Rubygems requires one.}
   spec.description   = %q{TODO: Write a longer description or delete this line.}
-  spec.homepage      = 'https://github.com/hashrabbit/ruuid-mongo'
+  spec.homepage      = 'https://github.com/hashrabbit/ruuid-mongoid'
   spec.license       = 'MIT'
 
   spec.files         = `git ls-files -z`.split("\x0").reject { |f| f.match(%r{^(test|spec|features)/}) }

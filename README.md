@@ -1,18 +1,18 @@
-# ruuid-mongo
+# ruuid-mongoid
 
-[![Build Status](https://img.shields.io/travis/hashrabbit/ruuid-mongo.svg)][travis]
+[![Build Status](https://img.shields.io/travis/hashrabbit/ruuid-mongoid.svg)][travis]
 
-ruuid-mongo provides BSON types and mixins for handling storage and retrieval of
-UUIDs within MongoDB.
+ruuid-mongoid provides BSON types and mixins for handling storage and retrieval
+of UUIDs within Mongoid models.
 
-[travis]: https://travis-ci.org/hashrabbit/ruuid-mongo
+[travis]: https://travis-ci.org/hashrabbit/ruuid-mongoid
 
 ## Installation
 
 Add this line to your application's Gemfile:
 
 ```ruby
-gem 'ruuid-mongo'
+gem 'ruuid-mongoid'
 ```
 
 And then execute:
@@ -39,7 +39,7 @@ and tags, and push the `.gem` file to [rubygems.org](https://rubygems.org).
 
 ## Contributing
 
-1. Fork it ( https://github.com/hashrabbit/ruuid-mongo/fork )
+1. Fork it ( https://github.com/hashrabbit/ruuid-mongoid/fork )
 2. Create your feature branch (`git checkout -b my-new-feature`)
 3. Commit your changes (`git commit -am 'Add some feature'`)
 4. Push to the branch (`git push origin my-new-feature`)
