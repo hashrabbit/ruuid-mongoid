@@ -69,11 +69,33 @@ describe RUUID::Mongoid::Extensions::UUID do
         end
       end
 
-      context 'when object not nil' do
+      context 'when object RUUID::UUID' do
         it 'returns BSON::Binary with UUID type and data' do
           expect(mongoized).to be_a(BSON::Binary)
           expect(mongoized.data).to eq(uuid.data)
           expect(mongoized.type).to eq(:uuid)
+        end
+      end
+
+      context 'when object string' do
+        subject(:mongoized) do
+          RUUID::UUID.send(method_name, uuid.to_s)
+        end
+
+        it 'returns BSON::Binary with UUID type and data' do
+          expect(mongoized).to be_a(BSON::Binary)
+          expect(mongoized.data).to eq(uuid.data)
+          expect(mongoized.type).to eq(:uuid)
+        end
+      end
+
+      context 'when malformed object string' do
+        let(:uuid) do
+          'not-a-uuid'
+        end
+
+        it 'returns original object' do
+          expect(mongoized).to eq('not-a-uuid')
         end
       end
     end

@@ -32,4 +32,52 @@ describe RUUID::Mongoid do
       expect(document.id).not_to be_nil
     end
   end
+
+  describe 'finding a document by ID' do
+    shared_examples 'a successful find' do
+      let!(:document) do
+        Album.create
+      end
+
+      subject(:found) do
+        Album.find(id)
+      end
+
+      it 'successfully finds the document' do
+        expect(found).to eq(document)
+      end
+    end
+
+    context 'when ID is RUUID::UUID object' do
+      let(:id) do
+        document.id
+      end
+
+      it_behaves_like 'a successful find'
+    end
+
+    context 'when ID is stringified, canonical UUID' do
+      let(:id) do
+        document.id.to_s
+      end
+
+      it_behaves_like 'a successful find'
+    end
+
+    context 'when ID is stringified, compact UUID' do
+      let(:id) do
+        document.id.to_s(:compact)
+      end
+
+      it_behaves_like 'a successful find'
+    end
+
+    context 'when ID is binary UUID' do
+      let(:id) do
+        document.id.data
+      end
+
+      it_behaves_like 'a successful find'
+    end
+  end
 end

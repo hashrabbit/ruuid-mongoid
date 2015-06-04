@@ -39,7 +39,8 @@ module RUUID
           # @return [BSON::Binary]
           #   The mongoized object.
           def mongoize(object)
-            object and object.mongoize
+            return object if object.nil?
+            parse(object).mongoize rescue object.mongoize
           end
           alias_method :evolve, :mongoize
         end
