@@ -79,5 +79,13 @@ describe RUUID::Mongoid do
 
       it_behaves_like 'a successful find'
     end
+
+    context 'when ID is malformed' do
+      it 'raises standard Mongoid::Errors::DocumentNotFound error' do
+        expect {
+          Album.find('bacon')
+        }.to raise_error(Mongoid::Errors::DocumentNotFound)
+      end
+    end
   end
 end
