@@ -8,8 +8,10 @@ module RUUID
         # @return [BSON::Binary]
         #   The mongoized object.
         def mongoize
-          ::BSON::Binary.new(data, :uuid)
+          BSON::Binary.new(data, :uuid)
         end
+
+        delegate :bson_type, :to_bson, to: :mongoize
 
         module ClassMethods
           # Convert the object from its Mongo-friendly Ruby type to this type.
@@ -21,7 +23,7 @@ module RUUID
           #   The demongoized UUID.
           def demongoize(object)
             case object
-            when ::BSON::Binary
+            when BSON::Binary
               new(object.data)
             when ::String
               parse(object)

@@ -88,4 +88,78 @@ describe RUUID::Mongoid do
       end
     end
   end
+
+  shared_examples 'saving a document' do
+    shared_examples 'a successful save' do
+      before do
+        document.id = id
+      end
+
+      it 'successfully saves the document' do
+        expect { document.save! }.not_to raise_error
+      end
+    end
+
+    context 'when ID is stringified, canonical UUID' do
+      let(:id) do
+        uuid.to_s
+      end
+
+      it_behaves_like 'a successful save'
+    end
+
+    context 'when ID is stringified, compact UUID' do
+      let(:id) do
+        uuid.to_s(:compact)
+      end
+
+      it_behaves_like 'a successful save'
+    end
+
+    context 'when ID is binary UUID' do
+      let(:id) do
+        uuid.data
+      end
+
+      it_behaves_like 'a successful save'
+    end
+
+    context 'when ID is malformed' do
+      subject(:document) do
+        Artist.new(id: 'foo')
+      end
+
+      it 'raises RUUID::InvalidUUIDError' do
+        expect { document.save! }.to raise_error(RUUID::InvalidUUIDError)
+      end
+    end
+  end
+
+  describe 'creating a new document' do
+    subject(:document) do
+      Artist.new
+    end
+
+    let(:uuid) do
+      RUUID::UUID.new
+    end
+
+    it_behaves_like 'saving a document'
+  end
+
+  describe 'updating an existing document' do
+    subject(:document) do
+      Artist.create(name: 'Santogold')
+    end
+
+    let(:uuid) do
+      document.id
+    end
+
+    before do
+      document.name = 'Santigold'
+    end
+
+    it_behaves_like 'saving a document'
+  end
 end
