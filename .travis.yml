@@ -1,11 +1,14 @@
 language: ruby
 sudo: false
 rvm:
-  - 2.2.2
-  - ruby-head
+- 2.2.2
+- ruby-head
 matrix:
   allow_failures:
-    - rvm: ruby-head
+  - rvm: ruby-head
   fast_finish: true
 services:
-  - mongodb
+- mongodb
+notifications:
+  slack:
+    secure: fDs+VfKecISLpceERh8s0iDUKb24QfL5risCUH5JXsNybHJ2YxApe16Wx3s6mvYUp076OkF8u8GzjyMbBKlFBUeTZJeRc5g/IrR1dafSJZZX+alaGSs+oX12W4AolnGExoo3ln727xFlgOZcTZa34+adXVlYAEDt2rZo6TyDoxgjigDc2nfP1t0WQ+qD4vvPPUZ17ZO6TuFO3/yUm875gKpOu0KYEbrES5feFj5OZHha7pFvNUDMPl3LDQGnHB/cIpBnARV4w63CRBWHPlkQOxtbqiLwS9b2IS4FlalOv2Lx0fDON9FPyKot5EhHB18Um7wzqEqZayVhnkLvgyli+IAmdcSG9eRH6fFmj7y5MFee4UMD1P/rFwZgOBOQG+9z7A9H+XfZWsy6tNF5pR725Y5FImEABl5zaMtaISSMOWYCj6nQPCbA3qTpqZ/3OOl93t87VRCN0VM5x+s5Qi9ZHku+l19IsTcumr7cOjuxXBINnIWY5JESncHPErONYVXVNW5cSBsgMpNcRYcqHuL3sWGfdnJqe++imhR/H6Dc2gweZ1560KxGePQhig3Mt1XwQNPz6nJZrTF0Nl13J/ku8qquBbmVc6rdIqHRdjiMM+lLvQulzxrG+maxvZ+YufOVJ99ruDywtwGCIw60+rlIVRS+hOJ0ybEVG7APml7LyRs=
